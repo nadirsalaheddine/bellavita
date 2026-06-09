@@ -28,4 +28,4 @@ To get a local copy of this project up and running on your machine, follow these
 
 1. **Clone the Repository:**
 ```bash
-   git clone git clone https://github.com/nadirsalaheddine/bellavita.git
+   git clone git clone [https://github.com/nadirsalaheddine/bellavita.git]
