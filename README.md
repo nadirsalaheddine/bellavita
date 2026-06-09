@@ -18,7 +18,6 @@
 Built using modern web technologies to ensure efficiency, clean code, and maintainability:
 
 *   **Frontend:** HTML5, CSS3 (with custom premium styling), JavaScript (ES6+).
-*   **Development Tools:** Powered and optimized by next-gen AI tools including **Bolt.new** and **Kimi AI** for high-quality, bug-free development.
 *   **Deployment:** Ready for production and perfectly structured for modern hosting platforms like **Netlify** or **GitHub Pages**.
 
 ---
