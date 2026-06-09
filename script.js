@@ -1,75 +1,87 @@
-// مصفوفة السلة
 let cart = [];
 
-// 1. وظيفة إضافة للمنتج
-function addToCart(name, usd, eur) {
-    cart.push({ name, usd, eur });
-    updateCartUI();
-    // فتح السلة تلقائياً عند الإضافة
-    document.getElementById('side-cart').classList.add('open');
-}
-
-// 2. وظيفة الحذف (الجديدة)
-function removeFromCart(index) {
-    cart.splice(index, 1); // حذف العنصر من المصفوفة
-    updateCartUI();
-}
-
-// 3. تحديث واجهة السلة
-function updateCartUI() {
-    const cartCount = document.getElementById('cart-count');
-    const cartItems = document.getElementById('cart-items');
-    const cartTotal = document.getElementById('cart-total');
+// إضافة منتج للسلة مع تفعيل أنيمايشن النبض
+function addToCart(name, usdPrice, eurPrice) {
+    cart.push({ id: Date.now() + Math.random(), name, usd: usdPrice, eur: eurPrice });
     
-    cartCount.innerText = cart.length;
-    cartItems.innerHTML = "";
+    // تفعيل تأثير النبض على زر السلة
+    const cartWrapper = document.getElementById('cart-btn-wrapper');
+    cartWrapper.classList.add('pulse-animation');
+    setTimeout(() => {
+        cartWrapper.classList.remove('pulse-animation');
+    }, 400);
+
+    updateCartUI();
+}
+
+// 🗑️ دالة حذف منتج معين من السلة وإعادة الحساب تلقائياً
+function removeFromCart(id) {
+    cart = cart.filter(item => item.id !== id);
+    updateCartUI();
+}
+
+// تحديث السلة والواجهة
+function updateCartUI() {
+    document.getElementById('cart-count').textContent = cart.length;
+    const itemsContainer = document.getElementById('cart-items');
+    itemsContainer.innerHTML = '';
     
     let totalUSD = 0;
     let totalEUR = 0;
-
-    cart.forEach((item, index) => {
+    
+    cart.forEach((item) => {
         totalUSD += item.usd;
         totalEUR += item.eur;
         
-        const div = document.createElement('div');
-        div.className = 'cart-item';
-        div.innerHTML = `
-            <span>${item.name}</span>
-            <div>
-                <strong>$${item.usd}</strong>
-                <i class="fas fa-trash delete-btn" onclick="removeFromCart(${index})"></i>
+        const itemEl = document.createElement('div');
+        itemEl.className = 'cart-item';
+        itemEl.innerHTML = `
+            <div class="cart-item-details">
+                <span>${item.name}</span>
+                <strong>$${item.usd} / €${item.eur}</strong>
             </div>
+            <button class="remove-item-btn" onclick="removeFromCart(${item.id})" title="Remove Item">
+                <i class="fas fa-trash-alt"></i>
+            </button>
         `;
-        cartItems.appendChild(div);
+        itemsContainer.appendChild(itemEl);
     });
-
-    cartTotal.innerText = `$${totalUSD} / €${totalEUR}`;
+    
+    document.getElementById('cart-total').textContent = `$${totalUSD} / €${totalEUR}`;
 }
 
-// 4. فتح وغلق السلة
 function toggleCart() {
     document.getElementById('side-cart').classList.toggle('open');
 }
 
-// 5. تبديل الثيم (الليل والنهار)
-const themeBtn = document.getElementById('theme-toggle');
-themeBtn.addEventListener('click', () => {
+// زر تبديل الثيم
+const themeToggleBtn = document.getElementById('theme-toggle');
+themeToggleBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme');
-    const icon = themeBtn.querySelector('i');
-    icon.className = document.body.classList.contains('dark-theme') ? 'fas fa-sun' : 'fas fa-moon';
+    const icon = themeToggleBtn.querySelector('i');
+    if (document.body.classList.contains('dark-theme')) {
+        icon.className = 'fas fa-sun';
+    } else {
+        icon.className = 'fas fa-moon';
+    }
 });
 
-// 6. تبديل اللغات (3 لغات)
-function switchLanguage(lang) {
-    // تحديث الأزرار
-    document.querySelectorAll('.lang-opt').forEach(opt => {
-        opt.classList.remove('active');
-        if(opt.innerText.toLowerCase() === lang) opt.classList.add('active');
-    });
+// 🌐 دالة تبديل اللغات المتطورة (تدعم الإنجليزية، الفرنسية، والإيطالية)
+function switchLanguage(lang, event) {
+    const opts = document.querySelectorAll('.lang-opt');
+    opts.forEach(opt => opt.classList.remove('active'));
+    if(event) {
+        event.target.classList.add('active');
+    }
 
-    // تبديل النصوص
-    document.querySelectorAll('[data-en]').forEach(el => {
-        const text = el.getAttribute(`data-${lang}`);
-        if(text) el.innerText = text;
+    const translatable = document.querySelectorAll('[data-en]');
+    translatable.forEach(el => {
+        if (lang === 'fr') {
+            if (el.getAttribute('data-fr')) el.textContent = el.getAttribute('data-fr');
+        } else if (lang === 'it') {
+            if (el.getAttribute('data-it')) el.textContent = el.getAttribute('data-it');
+        } else {
+            if (el.getAttribute('data-en')) el.textContent = el.getAttribute('data-en');
+        }
     });
 }
