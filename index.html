@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bella Vita | Italian Summer Luxury</title>
+    <title>Bella Vita | Italian Summer Shop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,23 +16,27 @@
         </div>
         
         <nav class="nav-shelf">
-            <a href="#hero" data-en="Home" data-fr="Accueil" data-it="Inizio">Home</a>
+            <a href="#hero" data-en="Home" data-fr="Accueil" data-it="Home">Home</a>
             <a href="#products-shelf" data-en="Products" data-fr="Produits" data-it="Prodotti">Products</a>
-            <a href="#contact-shelf" data-en="Contact" data-fr="Contact" data-it="Contatto">Contact</a>
+            <a href="#sunset-shelf" data-en="Sunset Line" data-fr="Ligne Sunset" data-it="Linea Tramonto">Sunset Line</a>
+            <a href="#about-shelf" data-en="About" data-fr="À Propos" data-it="Chi Siamo">About</a>
+            <a href="#contact-shelf" data-en="Contact" data-fr="Contact" data-it="Contatti">Contact</a>
         </nav>
 
         <div class="nav-controls">
-            <button id="theme-toggle" class="control-btn">
+            <button id="theme-toggle" class="control-btn" title="Toggle Light/Dark">
                 <i class="fas fa-moon"></i>
             </button>
             
             <div class="lang-switcher">
-                <span class="lang-opt active" onclick="switchLanguage('en')">EN</span>
-                <span class="lang-opt" onclick="switchLanguage('fr')">FR</span>
-                <span class="lang-opt" onclick="switchLanguage('it')">IT</span>
+                <span class="lang-opt active" onclick="switchLanguage('en', event)">EN</span>
+                <span class="divider">|</span>
+                <span class="lang-opt" onclick="switchLanguage('fr', event)">FR</span>
+                <span class="divider">|</span>
+                <span class="lang-opt" onclick="switchLanguage('it', event)">IT</span>
             </div>
 
-            <div class="cart-icon-wrapper" onclick="toggleCart()">
+            <div id="cart-btn-wrapper" class="cart-icon-wrapper" onclick="toggleCart()">
                 <i class="fas fa-shopping-basket basket-btn"></i>
                 <span id="cart-count">0</span>
             </div>
@@ -42,40 +46,139 @@
     <section id="hero" class="hero-section">
         <div class="sun-glow"></div>
         <div class="hero-content">
-            <span class="badge" data-en="Italian Luxury" data-fr="Luxe Italien" data-it="Lusso Italiano">Italian Luxury</span>
+            <span class="badge" data-en="Amalfi Coast Inspiration" data-fr="Inspiration Côte Amalfitaine" data-it="Ispirazione Costiera Amalfitana">Amalfi Coast Inspiration</span>
             <h1 class="hero-title">
-                <span data-en="Sun-Kissed" data-fr="Produits" data-it="Baciata dal Sole">Sun-Kissed</span>
-                <span class="gradient-text" data-en="Summer Glow" data-fr="Éclat d'Été" data-it="Splendore Estivo">Summer Glow</span>
+                <span data-en="Sun-Kissed Premium" data-fr="Produits Premium" data-it="Prodotti Premium">Sun-Kissed Premium</span>
+                <span class="gradient-text" data-en="Summer Elixirs" data-fr="Élixirs d'Été" data-it="Elisir Estivi">Summer Elixirs</span>
             </h1>
-            <p class="hero-desc" data-en="Experience the absolute radiance of Amalfi. Pure, rare, and high-speed beauty." data-fr="Découvrez l'éclat absolu d'Amalfi. Beauté pure, rare et rapide." data-it="Scopri l'assoluta radiosità di Amalfi. Bellezza pura, rara e veloce.">
-                Experience the absolute radiance of Amalfi. Pure, rare, and high-speed beauty.
+            <p class="hero-desc" data-en="Experience the absolute radiance of Italian summer. Formulated with rare Mediterranean botanicals for a flawless, natural glow." data-fr="Découvrez l'éclat absolu de l'été italien. Formulé avec des plantes méditerranéennes rares pour un éclat naturel et parfait." data-it="Vivi l'assoluta luminosità dell'estate italiana. Formulato con rari estratti botanici mediterranei per un aspetto impeccabile.">
+                Experience the absolute radiance of Italian summer. Formulated with rare Mediterranean botanicals for a flawless, natural glow.
             </p>
             <a href="#products-shelf" class="cta-btn">
-                <span data-en="Shop Now" data-fr="Acheter" data-it="Acquista Ora">Shop Now</span>
+                <span data-en="Shop Collection" data-fr="Acheter la Collection" data-it="Acquista Collezione">Shop Collection</span>
+                <i class="fas fa-arrow-down"></i>
             </a>
         </div>
     </section>
 
     <section id="products-shelf" class="products-section">
+        <h2 class="shelf-title" data-en="Our Summer Shelf" data-fr="Notre Étagère d'Été" data-it="Il Nostro Scaffale Estivo">Our Summer Shelf</h2>
         <div class="products-grid">
             <div class="product-card">
-                <div class="img-box bg-lemon"><i class="fas fa-leaf"></i></div>
+                <div class="img-box bg-lemon">
+                    <i class="fas fa-seedling prod-icon"></i>
+                </div>
                 <div class="prod-info">
-                    <h3 data-en="Limone Cleanser" data-fr="Nettoyant Limone" data-it="Detergente al Limone">Limone Cleanser</h3>
+                    <h3 data-en="Limone Brightening Cleanser" data-fr="Nettoyant Éclaircissant Limone" data-it="Detergente Illuminante al Limone">Limone Brightening Cleanser</h3>
+                    <p data-en="Infused with pure Amalfi lemon extracts to balance skin pH and reveal hidden radiance." data-fr="Infusé d'extraits purs de citron d'Amalfi pour équilibrer le pH." data-it="Infuso con estratti di limone d'Amalfi per bilanciare il pH della pelle.">Infused with pure Amalfi lemon extracts to balance skin pH and reveal hidden radiance.</p>
                     <div class="prod-footer">
                         <span class="price">$25 / €23</span>
                         <button class="add-btn" onclick="addToCart('Limone Cleanser', 25, 23)"><i class="fas fa-plus"></i></button>
                     </div>
                 </div>
             </div>
+
             <div class="product-card">
-                <div class="img-box bg-orange"><i class="fas fa-sun"></i></div>
+                <div class="img-box bg-orange">
+                    <i class="fas fa-cloud-sun prod-icon"></i>
+                </div>
                 <div class="prod-info">
-                    <h3 data-en="Bergamot Serum" data-fr="Sérum Bergamote" data-it="Siero al Bergamotto">Bergamot Serum</h3>
+                    <h3 data-en="Bergamot Velvet Serum" data-fr="Sérum Velours Bergamote" data-it="Siero al Velluto di Bergamotto">Bergamot Velvet Serum</h3>
+                    <p data-en="A rare, lightweight golden oil providing high-speed hydration and absolute defense." data-fr="Une huile dorée rare et légère offrant une hydratation ultra-rapide." data-it="Un olio dorato raro e leggero che offre un'idratazione ad alta velocità.">A rare, lightweight golden oil providing high-speed hydration and absolute defense.</p>
                     <div class="prod-footer">
                         <span class="price">$45 / €42</span>
                         <button class="add-btn" onclick="addToCart('Bergamot Serum', 45, 42)"><i class="fas fa-plus"></i></button>
                     </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-box bg-olive">
+                    <i class="fas fa-spa prod-icon"></i>
+                </div>
+                <div class="prod-info">
+                    <h3 data-en="Olive Leaf Luxury Elixir" data-fr="Élixir de Luxe Feuille d'Olivier" data-it="Elisir di Lusso alle Foglie d'Olivo">Olive Leaf Luxury Elixir</h3>
+                    <p data-en="Premium extract harvested from ancient Tuscan trees for powerful anti-aging protection." data-fr="Extrait premium récolté sur des oliviers toscans anciens." data-it="Estratto d'oliva premium raccolto da alberi toscani per una protezione antietà.">Premium extract harvested from ancient Tuscan trees for powerful anti-aging protection.</p>
+                    <div class="prod-footer">
+                        <span class="price">$60 / €55</span>
+                        <button class="add-btn" onclick="addToCart('Olive Elixir', 60, 55)"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-box bg-mint">
+                    <i class="fas fa-ice-cream prod-icon"></i>
+                </div>
+                <div class="prod-info">
+                    <h3 data-en="Mentha Cooling Mist" data-fr="Brume Rafraîchissante Mentha" data-it="Spray Rinfrescante alla Menta">Mentha Cooling Mist</h3>
+                    <p data-en="Instant refreshing spray that revives skin under the Mediterranean sun waves." data-fr="Spray rafraîchissant instantané qui ravive la peau under the sun." data-it="Spray rinfrescante istantaneo che ravviva la pelle sotto il sole.">Instant refreshing spray that revives skin under the Mediterranean sun waves.</p>
+                    <div class="prod-footer">
+                        <span class="price">$20 / €18</span>
+                        <button class="add-btn" onclick="addToCart('Mentha Mist', 20, 18)"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sunset-shelf" class="products-section sunset-theme">
+        <h2 class="shelf-title" data-en="Amalfi Sunset Line" data-fr="Ligne Sunset d'Amalfi" data-it="Linea Tramonto di Amalfi">Amalfi Sunset Line</h2>
+        <div class="products-grid">
+            
+            <div class="product-card glow-card">
+                <div class="img-box bg-sunset-gold">
+                    <i class="fas fa-moon prod-icon"></i>
+                </div>
+                <div class="prod-info">
+                    <h3 data-en="Lunar Lavender Night Serum" data-fr="Sérum de Nuit Lavande Lunaire" data-it="Siero Notturno Lavanda Lunare">Lunar Lavender Night Serum</h3>
+                    <p data-en="Overnight cellular repair infused with rare volcanic lavender and golden minerals." data-fr="Réparation cellulaire nocturne infusée de lavande volcanique rare." data-it="Riparazione cellulare notturna infusa con rara lavanda vulcanica.">Overnight cellular repair infused with rare volcanic lavender and golden minerals.</p>
+                    <div class="prod-footer">
+                        <span class="price">$55 / €50</span>
+                        <button class="add-btn" onclick="addToCart('Lunar Night Serum', 55, 50)"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card glow-card">
+                <div class="img-box bg-sunset-rose">
+                    <i class="fas fa-eye prod-icon"></i>
+                </div>
+                <div class="prod-info">
+                    <h3 data-en="Tiziri Lunar Eye Patches" data-fr="Patchs Yeux Lunaires Tiziri" data-it="Patch Occhi Lunari Tiziri">Tiziri Lunar Eye Patches</h3>
+                    <p data-en="Absolute hydration and cooling effect to erase fatigue under the Italian stars." data-fr="Hydratation absolue et effet fraîcheur pour effacer la fatigue." data-it="Idratazione assoluta ed effetto rinfrescante sotto le stelle italiane.">Absolute hydration and cooling effect to erase fatigue under the Italian stars.</p>
+                    <div class="prod-footer">
+                        <span class="price">$32 / €29</span>
+                        <button class="add-btn" onclick="addToCart('Lunar Eye Patches', 32, 29)"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about-shelf" class="about-section">
+        <div class="about-container">
+            <h2 data-en="Our Italian Story" data-fr="Notre Histoire Italienne" data-it="La Nostra Storia Italiana">Our Italian Story</h2>
+            <p data-en="Born in the sunny cliffs of Positano, Bella Vita blends traditional Italian botany with cutting-edge web design speed. We source rare ingredients to create premium experiences for your skin and soul." data-fr="Né dans les falaises ensoleillées de Positano, Bella Vita allie la botanique italienne traditionnelle à la vitesse du web design de pointe." data-it="Nata tra le scogliere soleggiate di Positano, Bella Vita unisce la botanica tradizionale italiana alla velocità del web design moderno.">
+                Born in the sunny cliffs of Positano, Bella Vita blends traditional Italian botany with cutting-edge web design speed. We source rare ingredients to create premium experiences for your skin and soul.
+            </p>
+        </div>
+    </section>
+
+    <section id="contact-shelf" class="contact-section">
+        <div class="contact-grid">
+            <div class="contact-box">
+                <h3 data-en="Get In Touch" data-fr="Contactez-nous" data-it="Contattaci">Get In Touch</h3>
+                <p data-en="Have questions about our premium summer secrets? Write to us anytime." data-fr="Des questions sur nos secrets d'été premium ?" data-it="Hai domande sui nostri segreti estivi? Scrivici in qualsiasi momento.">Have questions about our premium summer secrets? Write to us anytime.</p>
+                <a href="mailto:salah.abahri2010@gmail.com" class="email-link">salah.abahri2010@gmail.com</a>
+            </div>
+            <div class="social-box">
+                <h3 data-en="Follow the Glow" data-fr="Suivez l'Éclat" data-it="Segui la Luminosità">Follow the Glow</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/nadirsalaheddine" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
@@ -83,21 +186,28 @@
 
     <div id="side-cart" class="side-cart">
         <div class="cart-header">
-            <h3 data-en="Basket" data-fr="Panier" data-it="Cestino">Basket</h3>
+            <h3 data-en="Your Basket" data-fr="Votre Panier" data-it="Il Tuo Carrello">Your Basket</h3>
             <i class="fas fa-times close-cart" onclick="toggleCart()"></i>
         </div>
-        <div id="cart-items" class="cart-items-list">
-            </div>
+        <div id="cart-items" class="cart-items-list"></div>
         <div class="cart-footer">
             <div class="total-line">
                 <span data-en="Total:" data-fr="Total :" data-it="Totale:">Total:</span>
                 <span id="cart-total">$0 / €0</span>
             </div>
+            <button class="checkout-btn" data-en="Checkout" data-fr="Commander" data-it="Acquista">Checkout</button>
         </div>
     </div>
 
-    <footer id="contact-shelf" class="footer">
-        <p>© 2026 Bella Vita | Made by Nadir Salaheddine</p>
+    <footer class="footer">
+        <p class="footer-text">
+            <span data-en="Made with" data-fr="Fait avec" data-it="Fatto con">Made with</span>
+            <span class="footer-heart">❤️</span>
+            <span data-en="by Nadir Salaheddine" data-fr="par Nadir Salaheddine" data-it="da Nadir Salaheddine">by Nadir Salaheddine</span>
+        </p>
+        <p style="color: #6e6d6a; font-size: 0.85rem; margin-top: 5px;">
+            © 2026 <span data-en="All rights reserved" data-fr="Tous droits réservés" data-it="Tutti i diritti riservati">All rights reserved</span>
+        </p>
     </footer>
 
     <script src="script.js"></script>
