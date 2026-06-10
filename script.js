@@ -14,7 +14,7 @@ function addToCart(name, usdPrice, eurPrice) {
     updateCartUI();
 }
 
-// 🗑️ دالة حذف منتج معين من السلة وإعادة الحساب تلقائياً
+// دالة حذف منتج معين من السلة
 function removeFromCart(id) {
     cart = cart.filter(item => item.id !== id);
     updateCartUI();
@@ -54,7 +54,7 @@ function toggleCart() {
     document.getElementById('side-cart').classList.toggle('open');
 }
 
-// زر تبديل الثيم
+// زر تبديل الثيم ليل نهار
 const themeToggleBtn = document.getElementById('theme-toggle');
 themeToggleBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark-theme');
@@ -66,7 +66,7 @@ themeToggleBtn.addEventListener('click', () => {
     }
 });
 
-// 🌐 دالة تبديل اللغات المتطورة (تدعم الإنجليزية، الفرنسية، والإيطالية)
+// دالة تبديل اللغات الثلاثية (EN | FR | IT)
 function switchLanguage(lang, event) {
     const opts = document.querySelectorAll('.lang-opt');
     opts.forEach(opt => opt.classList.remove('active'));
@@ -84,4 +84,37 @@ function switchLanguage(lang, event) {
             if (el.getAttribute('data-en')) el.textContent = el.getAttribute('data-en');
         }
     });
+}
+
+// 🍏 التحكم في نوافذ الشراء بستايل الـ iOS
+function openCheckoutModal() {
+    if (cart.length === 0) {
+        alert("Your basket is empty! / Votre panier est vide!");
+        return;
+    }
+    toggleCart(); // غلق السلة الجانبية
+    document.getElementById('checkout-modal').classList.add('active');
+}
+
+function closeCheckoutModal() {
+    document.getElementById('checkout-modal').classList.remove('active');
+}
+
+function handleOrderSubmit(event) {
+    event.preventDefault(); // منع تحديث الصفحة
+    
+    closeCheckoutModal();
+    
+    // إظهار بطاقة نجاح الشراء
+    document.getElementById('success-modal').classList.add('active');
+    
+    // تفريغ السلة وتحديث الواجهة
+    cart = [];
+    updateCartUI();
+    
+    document.getElementById('checkout-form').reset();
+}
+
+function closeSuccessModal() {
+    document.getElementById('success-modal').classList.remove('active');
 }
