@@ -14,7 +14,6 @@
     --olive-shelf: #f1f8e9;
     --mint-shelf: #e0f2f1;
     
-    /* ألوان الرف الجديد (Sunset) */
     --sunset-gold: #fff3e0;
     --sunset-rose: #fce4ec;
 }
@@ -55,7 +54,7 @@ body {
     overflow-x: hidden;
 }
 
-/* النافبار الزجاجي (Glassmorphism Effect) */
+/* النافبار الزجاجي (Glassmorphism) */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -149,7 +148,7 @@ body {
 .divider { color: rgba(0,0,0,0.1); margin: 0 1px; }
 .dark-theme .divider { color: rgba(255,255,255,0.1); }
 
-/* تأثير النبض لزر السلة عند الإضافة */
+/* تأثير النبض لزر السلة */
 .cart-icon-wrapper { position: relative; cursor: pointer; }
 .basket-btn { font-size: 1.15rem; color: var(--text-main); transition: transform 0.2s; }
 .cart-icon-wrapper:hover .basket-btn { transform: scale(1.1); color: var(--accent); }
@@ -248,7 +247,7 @@ body {
 }
 .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
 
-/* شبكة المنتجات وتأثيرات الصعود الفخم */
+/* شبكة المنتجات */
 .products-section { padding: 4rem 5%; }
 .shelf-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; text-align: center; margin-bottom: 2.5rem; }
 
@@ -290,12 +289,10 @@ body {
 .bg-orange { background: var(--orange-shelf); color: #f57c00; }
 .bg-olive { background: var(--olive-shelf); color: #689f38; }
 .bg-mint { background: var(--mint-shelf); color: #0097a7; }
-
-/* ألوان خلفيات المنتجات الجديدة */
 .bg-sunset-gold { background: var(--sunset-gold); color: #ffb300; }
 .bg-sunset-rose { background: var(--sunset-rose); color: #ec407a; }
 
-/* ✨ تأثير التوهج الفخم للقسم الجديد (Glow Wave Effect) */
+/* تأثير التوهج للقسم الجديد */
 .sunset-theme {
     background: linear-gradient(180deg, transparent, rgba(230, 176, 12, 0.02));
     border-top: 1px dashed var(--border-color);
@@ -339,7 +336,7 @@ body {
 .social-icons a { color: var(--text-main); font-size: 1.2rem; transition: color 0.2s; }
 .social-icons a:hover { color: var(--accent); }
 
-/* السلة الزجاجية الفخمة وخيار الحذف الأنيق */
+/* السلة الجانبية */
 .side-cart {
     position: fixed;
     top: 0;
@@ -359,16 +356,12 @@ body {
     transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.dark-theme .side-cart {
-    background: rgba(20, 20, 18, 0.85);
-}
-
+.dark-theme .side-cart { background: rgba(20, 20, 18, 0.85); }
 .side-cart.open { right: 0; }
 .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; }
 .close-cart { cursor: pointer; color: var(--text-muted); font-size: 1.1rem; }
 .cart-items-list { flex-grow: 1; overflow-y: auto; margin: 1rem 0; }
 
-/* تصميم سطر المنتج داخل السلة مع زر الحذف */
 .cart-item {
     display: flex;
     justify-content: space-between;
@@ -378,13 +371,8 @@ body {
     border-bottom: 1px dashed var(--border-color);
 }
 
-.cart-item-details {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
+.cart-item-details { display: flex; flex-direction: column; gap: 2px; }
 
-/* زر الحذف السحري الأحمر الفخم */
 .remove-item-btn {
     background: none;
     border: none;
@@ -394,15 +382,97 @@ body {
     font-size: 0.95rem;
     transition: transform 0.2s, color 0.2s;
 }
-
-.remove-item-btn:hover {
-    transform: scale(1.2);
-    color: #b71c1c;
-}
+.remove-item-btn:hover { transform: scale(1.2); color: #b71c1c; }
 
 .cart-footer { border-top: 1px solid var(--border-color); padding-top: 0.8rem; }
 .total-line { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 0.8rem; font-size: 0.95rem; }
 .checkout-btn { background: var(--accent); color: #000; border: none; width: 100%; padding: 11px; border-radius: 20px; font-weight: 700; cursor: pointer; }
+
+/* 🍏 ستايل نافذة الآيفون الفخمة (iOS Modal) */
+.ios-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.ios-modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+.ios-modal {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    width: 90%;
+    max-width: 400px;
+    border-radius: 24px;
+    padding: 1.8rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.dark-theme .ios-modal {
+    background: rgba(28, 28, 30, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.ios-modal-overlay.active .ios-modal { transform: scale(1) translateY(0); }
+.ios-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.ios-modal-header h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+.close-ios-modal { cursor: pointer; color: var(--text-muted); font-size: 1.1rem; }
+.close-ios-modal:hover { color: #e53935; }
+
+.ios-input-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1.2rem; }
+.ios-input-group label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }
+.ios-input-group input {
+    background: rgba(0, 0, 0, 0.04);
+    border: none;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    outline: none;
+    transition: background 0.2s;
+}
+.dark-theme .ios-input-group input { background: rgba(255, 255, 255, 0.05); }
+.ios-input-group input:focus { background: rgba(230, 176, 12, 0.08); }
+
+.ios-submit-btn {
+    background: var(--text-main);
+    color: var(--bg-main);
+    border: none;
+    width: 100%;
+    padding: 13px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 0.5rem;
+}
+.ios-submit-btn:hover { background: var(--accent); color: #000; }
+.ios-submit-btn:active { transform: scale(0.98); }
+
+/* ستايل بطاقة شكراً */
+.success-style { text-align: center; padding: 2.2rem 1.8rem; }
+.success-icon-box { font-size: 3.5rem; color: #4caf50; margin-bottom: 1rem; animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+@keyframes scaleIn { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+.success-style h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.6rem; }
+.success-style p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.5rem; }
+.ios-close-btn { background: #4caf50; color: white; border: none; padding: 10px 30px; border-radius: 12px; font-weight: 700; cursor: pointer; }
 
 /* الفوتر */
 .footer { text-align: center; padding: 1.5rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.75rem; }
